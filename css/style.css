@@ -338,6 +338,7 @@ legend { padding: 0 .45rem; color: var(--navy-900); font-weight: 800; }
 .footer-links a { color: rgba(255, 255, 255, .8); text-decoration: none; }
 .footer-links a:hover { color: var(--gold-soft); }
 .footer-copy { grid-column: 1 / -1; padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, .14); font-size: .85rem; }
+.footer-admin { display: inline-flex; align-items: center; gap: .4rem; color: rgba(255, 255, 255, .65); font-size: .82rem; }
 
 /* ---------- Reveal animation ---------- */
 html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
