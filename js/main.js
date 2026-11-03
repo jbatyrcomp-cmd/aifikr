@@ -194,7 +194,7 @@
           status.textContent = message;
           form.reset();
         } catch (error) {
-          status.textContent = error.message || 'Saqlashda xatolik yuz berdi. Qayta urinib ko‘ring.';
+          status.textContent = error.message || 'Saqlashda xatolik yuz berdi. Qayta urinib köriñ.';
           status.classList.add('is-error');
         } finally {
           if (submitButton) submitButton.disabled = false;
