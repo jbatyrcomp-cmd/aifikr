@@ -12,8 +12,9 @@
      --------------------------------------------------------------------- */
   const CONFIG = {
     email: '',            // masalan: 'salom@sizning-domen.uz'
-    volunteerFormUrl: '', // volontyor arizasi formasi havolasi (Google Forms va h.k.)
-    surveyUrl: ''         // talabalar so‘rovnomasi havolasi
+    volunteerFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScA1-I2tKAQz8LYM0U10wezQIbe5YyWAp-ux_QB871cTpChCA/viewform', // ishtirokchi volontyor
+    organizerFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeZMoqEceWa-4V-RcGYpIeorX34J6PJB-Etz7adDa3MGJdlw/viewform', // loyiha tashkilotchisi
+    surveyUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScoJS63ru8PSAm_tZ4RUJOcWm1XsHs6ZJPsn6fA4p3t61dNA/viewform' // talabalar so‘rovnomasi
   };
 
   const root = document.documentElement;

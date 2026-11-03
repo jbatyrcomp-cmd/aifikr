@@ -48,7 +48,7 @@
           <li><a href="#bosqichlar">Bosqichlar</a></li>
           <li><a href="#natijalar">Natijalar</a></li>
           <li><a href="#byudjet">Byudjet</a></li>
-          <li><a href="#sorovnoma" data-modal-target="sorovnoma">So‘rovnoma</a></li>
+          <li><a href="#sorovnoma" data-config="surveyUrl">So‘rovnoma</a></li>
           <li><a href="#manbalar">Manbalar</a></li>
           <li><a class="btn btn-primary btn-sm" href="#ishtirok">Qo‘shilish</a></li>
         </ul>
@@ -379,17 +379,17 @@
           <article class="cta-card reveal">
             <h3>Ishtirokchi volontyor</h3>
             <p>Ma’ruzalarda qatnashing, qo‘shimcha materiallar oling va onlayn darslarda ishtirok eting.</p>
-            <button class="btn btn-gold" type="button" data-modal-target="ishtirokchi-ariza">Ariza qoldirish</button>
+            <a class="btn btn-gold" href="#ishtirokchi-ariza" data-config="volunteerFormUrl">Ariza qoldirish</a>
           </article>
           <article class="cta-card reveal">
             <h3>Loyiha tashkilotchisi</h3>
             <p>Ma’ruza va darslarni tashkil eting, ishtirokchilar natijalarini tahlil qiling va ularga xabar bering.</p>
-            <button class="btn btn-gold" type="button" data-modal-target="tashkilotchi-ariza">Tashkilotchi bo‘lish</button>
+            <a class="btn btn-gold" href="#tashkilotchi-ariza" data-config="organizerFormUrl">Tashkilotchi bo‘lish</a>
           </article>
           <article class="cta-card reveal">
             <h3>Talabalar so‘rovnomasi</h3>
             <p>SI dan foydalanish tajribangiz va universitetdan kutganlaringiz haqida anonim so‘rovnoma (taxminan 20–25 daqiqa).</p>
-            <button class="btn btn-light" type="button" data-modal-target="sorovnoma">So‘rovnomani boshlash</button>
+            <a class="btn btn-light" href="#sorovnoma" data-config="surveyUrl">So‘rovnomani boshlash</a>
           </article>
         </div>
       </div>
@@ -545,7 +545,7 @@
             <a class="contact-mail" href="#aloqa" data-config-email>Aloqa manzili tez orada e’lon qilinadi</a>
             <p class="contact-label">Veb-sayt</p>
             <p class="contact-site">aifikr.att25.uz</p>
-            <p class="contact-label">Telegram(loyiha asoschisi: jumamyradov batyr)</p>
+            <p class="contact-label">Telegram(loyiha asoschisi)</p>
             <p class="contact-telegram">@Insurgent19</p>
             <p class="contact-label">Telegram bot ( yaqinda toliq ishlashga tayyor boladi)</p>
             <p class="contact-telegram">@aifikr_bot</p>
@@ -560,6 +560,7 @@
       <div>
         <p class="footer-brand">AI-FIKR</p>
         <p class="footer-note">Universitetlarda sun’iy intellektdan mas’uliyatli foydalanish tashabbusi.</p>
+        <p class="footer-admin">Loyiha tashabbuschisi: Iqtisodiyot fakulteti ATT yonalishi 2-kurs talabasi <a href="https://t.me/Insurgent19" target="_blank" rel="noopener">Jumamyradov Batyr</a></p>
       </div>
       <ul class="footer-links">
         <li><a href="#muammo">Muammo</a></li>
