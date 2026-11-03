@@ -12,7 +12,7 @@
      --------------------------------------------------------------------- */
   const CONFIG = {
     email: '',
-    sheetsApiUrl: 'https://script.google.com/macros/s/AKfycby9WZDgHsd7SddFY8VdK7SFGGXLyeLxLfdieyGWpfl-1_43loXvB70EtqV3WEHgRjCawQ/exec'
+    sheetsApiUrl: 'https://script.google.com/macros/s/AKfycbyf0xDNCYcKmzLw_1UHnB3Uvc6mMi9r6DUeX1JoJTczkbdAT8Euu9gSocGMMeS-6-m4/exec'
   };
 
   const root = document.documentElement;
@@ -154,9 +154,9 @@
   /* ---------- Ishtirok formalarini Sheets'ga yuborish ---------- */
   function initParticipationForms() {
     const forms = [
-      { id: 'survey-form', statusId: 'survey-status', type: 'survey', message: 'So‘rovnomangiz qabul qilindi. Rahmat!' },
-      { id: 'volunteer-form', statusId: 'volunteer-status', type: 'participant', message: 'Arizangiz qabul qilindi. Tez orada siz bilan bog‘lanamiz.' },
-      { id: 'organizer-form', statusId: 'organizer-status', type: 'organizer', message: 'Arizangiz qabul qilindi. Tez orada siz bilan bog‘lanamiz.' }
+      { id: 'survey-form', statusId: 'survey-status', type: 'survey', message: 'Sörovnomangiz qabul qilindi. Rahmat!' },
+      { id: 'volunteer-form', statusId: 'volunteer-status', type: 'participant', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' },
+      { id: 'organizer-form', statusId: 'organizer-status', type: 'organizer', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' }
     ];
 
     forms.forEach(({ id, statusId, type, message }) => {
@@ -166,7 +166,7 @@
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!form.checkValidity()) {
-          status.textContent = 'Iltimos, majburiy maydonlarni to‘ldiring.';
+          status.textContent = 'Iltimos, majburiy maydonlarni töldiring.';
           status.classList.add('is-error');
           form.reportValidity();
           return;
@@ -211,7 +211,7 @@
     if (!survey || !frequency || !usageDetails || !progressValue || !progressBar) return;
 
     const updateUsageQuestions = () => {
-      const skipDetails = frequency.value === 'Hech qachon';
+      const skipDetails = frequency.value === 'Heç qaçon';
       usageDetails.classList.toggle('is-hidden', skipDetails);
       Array.from(usageDetails.querySelectorAll('select, input, textarea')).forEach((input) => {
         input.disabled = skipDetails;
