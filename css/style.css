@@ -362,6 +362,19 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 @media (max-width: 600px) {
   .brand-text small { display: none; }
+  .participation-modal {
+    width: calc(100% - 1rem);
+    padding: .8rem;
+  }
+  .participation-form {
+    padding: 1rem;
+  }
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form-span-2 {
+    grid-column: auto;
+  }
   .step-head { flex-wrap: wrap; gap: .6rem .8rem; }
   .step-title { flex-basis: calc(100% - 64px); order: 1; }
   .step-num { order: 0; }
@@ -370,6 +383,13 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   .budget li { grid-template-columns: 1fr auto; row-gap: .35rem; }
   .budget .bar { grid-column: 1 / -1; order: 3; }
   .rating-scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rating-row {
+    grid-template-columns: 1fr;
+    gap: .55rem;
+  }
+  .rating-options {
+    justify-content: space-between;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
