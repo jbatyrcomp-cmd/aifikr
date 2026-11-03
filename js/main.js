@@ -11,10 +11,8 @@
      Bo‘sh qoldirilsa, tugmalar "Aloqa" bo‘limiga olib boradi.
      --------------------------------------------------------------------- */
   const CONFIG = {
-    email: '',            // masalan: 'salom@sizning-domen.uz'
-    volunteerFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScqDa92ppSdT8cNKMT3ylWIzVhNZhEizXWriV1ZUMNlYGWkVw/viewform', // ishtirokchi volontyor
-    organizerFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeRx-UUmbd1tThYODee34pH4YH1ksUiWy1XopOyv-br4OeJ2w/viewform', // loyiha tashkilotchisi
-    surveyUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfadc09FqsuTRZIErbEda_ybUi8QZ-CxmKhgvrR6SMR6tutkw/viewform' // talabalar so‘rovnomasi
+    email: '',
+    sheetsApiUrl: 'https://script.google.com/macros/s/AKfycbyf0xDNCYcKmzLw_1UHnB3Uvc6mMi9r6DUeX1JoJTczkbdAT8Euu9gSocGMMeS-6-m4/exec'
   };
 
   const root = document.documentElement;
@@ -25,20 +23,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasIO = 'IntersectionObserver' in window;
 
-  /* ---------- 1. Sozlamalarni havolalarga ulash ---------- */
+  /* ---------- 1. Sozlamalarni ulash ---------- */
   function applyConfig() {
-    $$('[data-config]').forEach((el) => {
-      const url = (CONFIG[el.dataset.config] || '').trim();
-      if (/^https?:\/\//i.test(url)) {
-        el.href = url;
-        el.target = '_blank';
-        el.rel = 'noopener';
-      } else {
-        el.dataset.pending = 'true';
-        el.title = 'Havola hali ulanmagan: Aloqa bölimiga ötadi';
-      }
-    });
-
     const mail = $('[data-config-email]');
     const email = (CONFIG.email || '').trim();
     if (mail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -165,19 +151,19 @@
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
-  /* ---------- Ishtirok formalarining holati ---------- */
+  /* ---------- Ishtirok formalarini Sheets'ga yuborish ---------- */
   function initParticipationForms() {
     const forms = [
-      { id: 'survey-form', statusId: 'survey-status', message: 'Forma töldirildi, ammo yuboriş xizmati hali ulanmagan. Loyiha guruhi tez orada yuboriş havolasini qöşadi.' },
-      { id: 'volunteer-form', statusId: 'volunteer-status', message: 'Iştirokçi volontyor arizasi töldirildi, ammo yuboriş xizmati hali ulanmagan.' },
-      { id: 'organizer-form', statusId: 'organizer-status', message: 'Taşkilotçi arizasi töldirildi, ammo yuboriş xizmati hali ulanmagan.' }
+      { id: 'survey-form', statusId: 'survey-status', type: 'survey', message: 'Sörovnomangiz qabul qilindi. Rahmat!' },
+      { id: 'volunteer-form', statusId: 'volunteer-status', type: 'participant', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' },
+      { id: 'organizer-form', statusId: 'organizer-status', type: 'organizer', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' }
     ];
 
-    forms.forEach(({ id, statusId, message }) => {
+    forms.forEach(({ id, statusId, type, message }) => {
       const form = document.getElementById(id);
       const status = document.getElementById(statusId);
       if (!form || !status) return;
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!form.checkValidity()) {
           status.textContent = 'Iltimos, majburiy maydonlarni töldiring.';
@@ -185,9 +171,35 @@
           form.reportValidity();
           return;
         }
+        if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/i.test(CONFIG.sheetsApiUrl)) {
+          status.textContent = 'Saqlash xizmati hali sozlanmagan. Apps Script Web App URL manzilini kiriting.';
+          status.classList.add('is-error');
+          return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) submitButton.disabled = true;
         status.classList.remove('is-error');
-        status.textContent = message;
-        status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+        status.textContent = 'Saqlanmoqda…';
+        try {
+          const data = Object.fromEntries(new FormData(form).entries());
+          data.tools = Array.from(form.querySelectorAll('input[name="tools"]:checked')).map((input) => input.value);
+          const response = await fetch(CONFIG.sheetsApiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ type, data })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.error || 'Saqlashda xatolik yuz berdi.');
+          status.textContent = message;
+          form.reset();
+        } catch (error) {
+          status.textContent = error.message || 'Saqlashda xatolik yuz berdi. Qayta urinib ko‘ring.';
+          status.classList.add('is-error');
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+          status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+        }
       });
     });
 
