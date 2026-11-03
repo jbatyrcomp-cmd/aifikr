@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI-FIKR">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0d2250"/>
+  <path d="M15 17.5A5.5 5.5 0 0 1 20.5 12h23A5.5 5.5 0 0 1 49 17.5v17a5.5 5.5 0 0 1-5.5 5.5H30l-9 8v-8h-.5a5.5 5.5 0 0 1-5.5-5.5z" fill="#fff"/>
+  <path d="M24 28h16M24 33h10" stroke="#c9a24b" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="24" cy="22" r="2.5" fill="#c9a24b"/><circle cx="32" cy="22" r="2.5" fill="#c9a24b"/><circle cx="40" cy="22" r="2.5" fill="#c9a24b"/>
+</svg>
