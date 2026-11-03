@@ -35,7 +35,7 @@
         el.rel = 'noopener';
       } else {
         el.dataset.pending = 'true';
-        el.title = 'Havola hali ulanmagan: Aloqa bo‘limiga o‘tadi';
+        el.title = 'Havola hali ulanmagan: Aloqa bölimiga ötadi';
       }
     });
 
@@ -168,9 +168,9 @@
   /* ---------- Ishtirok formalarining holati ---------- */
   function initParticipationForms() {
     const forms = [
-      { id: 'survey-form', statusId: 'survey-status', message: 'Forma to‘ldirildi, ammo yuborish xizmati hali ulanmagan. Loyiha guruhi tez orada yuborish havolasini qo‘shadi.' },
-      { id: 'volunteer-form', statusId: 'volunteer-status', message: 'Ishtirokchi volontyor arizasi to‘ldirildi, ammo yuborish xizmati hali ulanmagan.' },
-      { id: 'organizer-form', statusId: 'organizer-status', message: 'Tashkilotchi arizasi to‘ldirildi, ammo yuborish xizmati hali ulanmagan.' }
+      { id: 'survey-form', statusId: 'survey-status', message: 'Forma töldirildi, ammo yuboriş xizmati hali ulanmagan. Loyiha guruhi tez orada yuboriş havolasini qöşadi.' },
+      { id: 'volunteer-form', statusId: 'volunteer-status', message: 'Iştirokçi volontyor arizasi töldirildi, ammo yuboriş xizmati hali ulanmagan.' },
+      { id: 'organizer-form', statusId: 'organizer-status', message: 'Taşkilotçi arizasi töldirildi, ammo yuboriş xizmati hali ulanmagan.' }
     ];
 
     forms.forEach(({ id, statusId, message }) => {
@@ -180,7 +180,7 @@
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!form.checkValidity()) {
-          status.textContent = 'Iltimos, majburiy maydonlarni to‘ldiring.';
+          status.textContent = 'Iltimos, majburiy maydonlarni töldiring.';
           status.classList.add('is-error');
           form.reportValidity();
           return;
@@ -199,7 +199,7 @@
     if (!survey || !frequency || !usageDetails || !progressValue || !progressBar) return;
 
     const updateUsageQuestions = () => {
-      const skipDetails = frequency.value === 'Hech qachon';
+      const skipDetails = frequency.value === 'Heç qaçon';
       usageDetails.classList.toggle('is-hidden', skipDetails);
       Array.from(usageDetails.querySelectorAll('select, input, textarea')).forEach((input) => {
         input.disabled = skipDetails;
