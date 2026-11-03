@@ -9,10 +9,10 @@ function setupAIFikrForms() {
     createSurveyForm()
   ];
 
-  forms.forEaç(function (item) {
-    Logger.log(item.name + ': ' + item.form.getPublişedUrl());
+  forms.forEach(function (item) {
+    Logger.log(item.name + ': ' + item.form.getPublishedUrl());
     Logger.log(item.name + ' edit: ' + item.form.getEditUrl());
-    Logger.log(item.şeet.getUrl());
+    Logger.log(item.sheet.getUrl());
   });
 }
 
@@ -25,7 +25,7 @@ function createParticipantForm() {
   const form = item.form;
   if (form.getItems().length === 0) {
     addCommonContactQuestions_(form);
-    addMultipleÇoice_(form, 'Qaysi faoliyatlarda qatnaşmoqçisiz?', [
+    addMultipleChoice_(form, 'Qaysi faoliyatlarda qatnaşmoqçisiz?', [
       'Ma’ruzalar', 'Onlayn darslar', 'Qöşimça materiallar oliş', 'Barçasida'
     ], true);
     form.addParagraphTextItem()
@@ -46,7 +46,7 @@ function createOrganizerForm() {
 
   if (form.getItems().length === 0) {
     addCommonContactQuestions_(form);
-    addÇeckbox_(form, 'Qaysi vazifalarda yordam bera olasiz?', [
+    addCheckbox_(form, 'Qaysi vazifalarda yordam bera olasiz?', [
       'Ma’ruza va darslarni taşkil etiş',
       'Iştirokçilar natijalarini tahlil qiliş',
       'Iştirokçilarga xabar beriş',
@@ -71,21 +71,21 @@ function createSurveyForm() {
 
   if (form.getItems().length === 0) {
     form.addTextItem().setTitle('Şaxsiy kod').setRequired(true);
-    addMultipleÇoice_(form, 'Kursingiz', [
+    addMultipleChoice_(form, 'Kursingiz', [
       '1-kurs', '2-kurs', '3-kurs', '4-kurs', 'Magistratura'
     ], true);
     form.addTextItem().setTitle('Fakultet va yönalişingiz');
-    addMultipleÇoice_(form, 'SI vositalaridan qançalik tez-tez foydalanasiz?', [
+    addMultipleChoice_(form, 'SI vositalaridan qançalik tez-tez foydalanasiz?', [
       'Heç qaçon',
       'Faqat sinab körganman',
       'Oyiga bir neça marta',
       'Haftasiga bir neça marta',
       'Deyarli har kuni'
     ], true);
-    addÇeckbox_(form, 'Qaysi SI vositalaridan foydalangansiz?', [
+    addCheckbox_(form, 'Qaysi SI vositalaridan foydalangansiz?', [
       'ÇatGPT', 'Gemini', 'Claude', 'Microsoft Copilot', 'DeepSeek', 'Böşqa'
     ]);
-    addMultipleÇoice_(form, 'SI dan qanday maqsadda foydalanasiz?', [
+    addMultipleChoice_(form, 'SI dan qanday maqsadda foydalanasiz?', [
       'Ma’lumot qidiriş va tuşuniş',
       'Matn, tarjima yoki grammatika',
       'Dasturlaş va masala yeçiş',
@@ -98,13 +98,13 @@ function createSurveyForm() {
     addScale_(form, 'SI notoğri ma’lumot berişidan xavotirdaman.', 'Umuman rozi emasman', 'Töliq roziman');
     addScale_(form, 'SI javobini boşqa manbada tekşira olaman.', 'Umuman qila olmayman', 'Juda yaxşi qila olaman');
     addScale_(form, 'Şaxsiy yoki maxfiy ma’lumotni SI ga kiritmaslik kerakligini bilaman.', 'Umuman qila olmayman', 'Juda yaxşi qila olaman');
-    addMultipleÇoice_(form, '“Gallyutsinatsiya” nimani anglatadi?', [
+    addMultipleChoice_(form, '“Gallyutsinatsiya” nimani anglatadi?', [
       'Işonçli köringan, ammo notoğri yoki töqib çiqarilgan javob',
       'Dasturning öz-özidan öçişi',
       'Modelning faqat rasm yaratışı',
       'Bilmayman'
     ], true);
-    addMultipleÇoice_(form, 'Universitetda SI böyiça qoidalar borligini bilasizmi?', [
+    addMultipleChoice_(form, 'Universitetda SI böyiça qoidalar borligini bilasizmi?', [
       'Ha, yaxşi bilaman', 'Qisman bilaman', 'Yöq, bilmayman'
     ], true);
     form.addParagraphTextItem().setTitle('SI dan foydalanışdagi asosiy muammoingiz');
@@ -121,18 +121,18 @@ function addCommonContactQuestions_(form) {
   form.addTextItem().setTitle('Kurs va fakultet').setRequired(true);
 }
 
-function addMultipleÇoice_(form, title, çoices, required) {
-  const item = form.addMultipleÇoiceItem()
+function addMultipleChoice_(form, title, choices, required) {
+  const item = form.addMultipleChoiceItem()
     .setTitle(title)
-    .setÇoiceValues(çoices);
+    .setChoiceValues(choices);
   if (required) item.setRequired(true);
   return item;
 }
 
-function addÇeckbox_(form, title, çoices) {
-  return form.addÇeckboxItem()
+function addCheckbox_(form, title, choices) {
+  return form.addCheckboxItem()
     .setTitle(title)
-    .setÇoiceValues(çoices);
+    .setChoiceValues(choices);
 }
 
 function addScale_(form, title, lowLabel, highLabel) {
@@ -144,33 +144,33 @@ function addScale_(form, title, lowLabel, highLabel) {
 }
 
 function addConsent_(form, title) {
-  return form.addÇeckboxItem()
+  return form.addCheckboxItem()
     .setTitle('Rozilik')
-    .setÇoiceValues([title || 'Men bilan loyiha doirasida boğlanışlariga roziman'])
+    .setChoiceValues([title || 'Men bilan loyiha doirasida boğlanışlariga roziman'])
     .setRequired(true);
 }
 
 function getOrCreateForm_(key, name, description) {
   const properties = PropertiesService.getScriptProperties();
   const formKey = 'FORM_' + key.toUpperCase();
-  const şeetKey = 'SHEET_' + key.toUpperCase();
+  const sheetKey = 'SHEET_' + key.toUpperCase();
   const formId = properties.getProperty(formKey);
-  const şeetId = properties.getProperty(şeetKey);
+  const sheetId = properties.getProperty(sheetKey);
   let form = formId ? FormApp.openById(formId) : null;
-  let şeet = şeetId ? SpreadşeetApp.openById(şeetId) : null;
+  let sheet = sheetId ? SpreadsheetApp.openById(sheetId) : null;
 
   if (!form) {
     form = FormApp.create(name);
     properties.setProperty(formKey, form.getId());
   }
-  if (!şeet) {
-    şeet = SpreadşeetApp.create(name + ' — Javoblar');
-    properties.setProperty(şeetKey, şeet.getId());
+  if (!sheet) {
+    sheet = SpreadsheetApp.create(name + ' — Javoblar');
+    properties.setProperty(sheetKey, sheet.getId());
   }
 
   form.setDescription(description);
   form.setConfirmationMessage('Rahmat! Javobingiz qabul qilindi.');
   form.setAcceptingResponses(true);
-  form.setDestination(FormApp.DestinationType.SPREADSHEET, şeet.getId());
-  return { form: form, şeet: şeet, name: name };
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, sheet.getId());
+  return { form: form, sheet: sheet, name: name };
 }
