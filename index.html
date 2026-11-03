@@ -405,7 +405,7 @@
           <p class="lead">Sörovnoma taxminan 20–25 daqiqa davom etadi. Ism, familiya va telefon raqami söralmaydi. Javoblar faqat umumlaştirilgan körinişda işlatiladi.</p>
         </div>
         <form class="participation-form reveal" id="survey-form">
-          <div class="form-notice"><strong>Iştirok etişdan oldin</strong><p>Istalgan savolni ötkazib yuborişingiz yoki istalgan vaqtda töxtaşingiz mumkin. Boşlanğiç va yakuniy sörovnomalarni boğlaş uçun şaxsiy koddan foydalaniladi.</p></div>
+          <div class="form-notice"><strong>Iştirok etişdan oldin</strong><p>Istalgan savolni ötkazib yuborişingiz yoki istalgan vaqtda töxtaşingiz mumkin.</p></div>
           <div class="survey-progress" aria-label="Sörovnoma töldirilişi">
             <div class="survey-progress-head"><span>Töldirilişi</span><strong id="survey-progress-value">0%</strong></div>
             <div class="survey-progress-track"><span id="survey-progress-bar"></span></div>
@@ -413,9 +413,9 @@
           <fieldset>
             <legend>A. Umumiy ma’lumot</legend>
             <div class="form-grid">
-              <label>Şaxsiy kod <span class="required">*</span><input name="survey-code" type="text" required placeholder="Masalan: O24 17"></label>
+              <label>Ism va familiya <span class="required">*</span><input name="name" type="text" required autocomplete="name" placeholder="Masalan: Ali Valiyev"></label>
               <label>Kursingiz <span class="required">*</span><select name="course" required><option value="">Tanlang</option><option>1-kurs</option><option>2-kurs</option><option>3-kurs</option><option>4-kurs</option><option>Magistratura</option></select></label>
-              <label class="form-span-2">Fakultet va yönalişingiz<input name="faculty" type="text" placeholder="Ixtiyoriy"></label>
+              <label class="form-span-2">Fakultet va yönalişingiz <span class="required">*</span><input name="faculty" type="text" required placeholder="Masalan: Iqtisodiyot fakulteti, ATT 220"></label>
             </div>
           </fieldset>
           <fieldset>
@@ -485,7 +485,7 @@
             <label>Ism va familiya <span class="required">*</span><input name="name" type="text" required autocomplete="name"></label>
             <label>E-poçta <span class="required">*</span><input name="email" type="email" required autocomplete="email"></label>
             <label>Telefon raqami<input name="phone" type="tel" autocomplete="tel" placeholder="+998 __ ___ __ __"></label>
-            <label>Kurs va fakultet <span class="required">*</span><input name="study" type="text" autocomplete="study" placeholder="Iqtisodiyot fakulteti, ATT 25-23a"></label>
+            <label>Kurs va fakultet <span class="required">*</span><input name="study" type="text" autocomplete="study" placeholder="Masalan: 3-kurs, Iqtisodiyot fakulteti"></label>
             <label class="form-span-2">Qaysi faoliyatlarda qatnaşmoqçisiz? <span class="required">*</span><select name="participant-activity" required><option value="">Tanlang</option><option>Ma’ruzalar</option><option>Onlayn darslar</option><option>Qöşimça materiallar oliş</option><option>Barçasida</option></select></label>
             <label class="form-span-2">AI-FIKRdan nimani kutyapsiz? <textarea name="motivation" rows="4" required></textarea></label>
           </div>
@@ -504,7 +504,7 @@
             <label>Ism va familiya <span class="required">*</span><input name="name" type="text" required autocomplete="name"></label>
             <label>E-poçta <span class="required">*</span><input name="email" type="email" required autocomplete="email"></label>
             <label>Telefon raqami<input name="phone" type="tel" autocomplete="tel"></label>
-            <label>Kurs va fakultet <span class="required">*</span><input name="study" type="text" required></label>
+            <label>Kurs va fakultet <span class="required">*</span><input name="study" type="text" autocomplete="study"placeholder="Masalan: 3-kurs, Iqtisodiyot fakulteti"></label>
             <label class="form-span-2">Qaysi vazifalarda yordam bera olasiz? <span class="required">*</span><select name="organizer-task" required><option value="">Tanlang</option><option>Ma’ruza va darslarni taşkil etiş</option><option>Iştirokçilar natijalarini tahlil qiliş</option><option>Iştirokçilarga xabar beriş</option><option>Ma’ruzada bevosita iştirok etiş</option><option>Barçasida</option></select></label>
             <label class="form-span-2">Taşkilotçilik tajribangiz va takliflaringiz <textarea name="motivation" rows="4" required></textarea></label>
           </div>
