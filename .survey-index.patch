@@ -1,0 +1,24 @@
+diff --git a/index.html b/index.html
+--- a/index.html
++++ b/index.html
+@@ -427,7 +427,18 @@
+             <div class="form-question"><p>Qaysi vositalardan foydalangansiz?</p><div class="check-grid">
+               <label class="check-option"><input type="checkbox" name="tools" value="ChatGPT"> ChatGPT</label><label class="check-option"><input type="checkbox" name="tools" value="Gemini"> Gemini</label><label class="check-option"><input type="checkbox" name="tools" value="Claude"> Claude</label><label class="check-option"><input type="checkbox" name="tools" value="Copilot"> Microsoft Copilot</label><label class="check-option"><input type="checkbox" name="tools" value="DeepSeek"> DeepSeek</label><label class="check-option"><input type="checkbox" name="tools" value="Other"> Boşqa</label>
+             </div></div>
+             <div class="form-grid usage-details">
+-              <label>Nima maqsadda foydalanasiz? <span class="required">*</span><select name="usage-purpose" required><option value="">Tanlang</option><option>Ma’lumot qidiriş va tuşuniş</option><option>Matn, tarjima yoki grammatika</option><option>Dasturlaş va masala yeçiş</option><option>Ğoya, reja yoki slayd</option><option>Topşiriqni tayyorlaş</option><option>Boşqa</option></select></label>
++              <div class="form-question form-span-2 usage-purpose-question">
++                <p>Nima maqsadda foydalanasiz? <span class="required">*</span> Bir neçta variantni tanlashingiz mumkin.</p>
++                <div class="check-grid usage-purpose-grid">
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Ma’lumot qidiriş va tuşuniş"> Ma’lumot qidiriş va tuşuniş</label>
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Matn, tarjima yoki grammatika"> Matn, tarjima yoki grammatika</label>
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Dasturlaş va masala yeçiş"> Dasturlaş va masala yeçiş</label>
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Ğoya, reja yoki slayd"> Ğoya, reja yoki slayd</label>
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Topşiriqni tayyorlaş"> Topşiriqni tayyorlaş</label>
++                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Boşqa"> Boşqa</label>
++                </div>
++                <label class="usage-purpose-other">Boşqa maqsad (ixtiyoriy)<textarea name="usage-purpose-other" rows="2" placeholder="Qöşimça maqsadingizni yozing"></textarea></label>
++              </div>
+               <label>SI javobini tekşiriş odatingiz <span class="required">*</span><select name="verification" required><option value="">Tanlang</option><option>Heç qaçon</option><option>Ba’zan</option><option>Köpinça</option><option>Har doim</option></select></label>
+               <label>SI dan asosan qayerda foydalanasiz? <select name="context"><option value="">Tanlang</option><option>Uyda</option><option>Universitetda</option><option>Iş joyida</option><option>Yölda yoki mobil qurilmada</option></select></label>
+               <label>Pullik versiyadan foydalanasizmi? <select name="paid-version"><option value="">Tanlang</option><option>Ha</option><option>Yöq</option><option>Bilmayman</option></select></label>

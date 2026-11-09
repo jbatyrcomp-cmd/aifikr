@@ -184,6 +184,7 @@
         try {
           const data = Object.fromEntries(new FormData(form).entries());
           data.tools = Array.from(form.querySelectorAll('input[name="tools"]:checked')).map((input) => input.value);
+          data['usage-purpose'] = Array.from(form.querySelectorAll('input[name="usage-purpose"]:checked')).map((input) => input.value);
           const response = await fetch(CONFIG.sheetsApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -206,6 +207,7 @@
     const survey = document.getElementById('survey-form');
     const frequency = survey && survey.elements.namedItem('frequency');
     const usageDetails = survey && survey.querySelector('.usage-details');
+    const usagePurpose = survey && survey.querySelectorAll('input[name="usage-purpose"]');
     const progressValue = document.getElementById('survey-progress-value');
     const progressBar = document.getElementById('survey-progress-bar');
     if (!survey || !frequency || !usageDetails || !progressValue || !progressBar) return;
@@ -228,9 +230,29 @@
       progressBar.style.width = `${percent}%`;
     };
     frequency.addEventListener('change', updateUsageQuestions);
+    if (usagePurpose.length) {
+      const updateUsagePurposeValidity = () => {
+        const message = Array.from(usagePurpose).some((input) => input.checked)
+          ? ''
+          : 'Kamida bitta maqsadni tanlang.';
+        usagePurpose[0].setCustomValidity(message);
+      };
+      usagePurpose.forEach((input) => input.addEventListener('change', updateUsagePurposeValidity));
+      updateUsagePurposeValidity();
+    }
     survey.addEventListener('input', updateProgress);
     survey.addEventListener('change', updateProgress);
     updateUsageQuestions();
+  }
+
+  function initRatingChoices() {
+    $$('.rating-options input[type="radio"]').forEach((input) => {
+      const choice = document.createElement('label');
+      choice.className = 'rating-choice';
+      choice.textContent = input.value;
+      input.parentNode.insertBefore(choice, input);
+      choice.appendChild(input);
+    });
   }
 
   /* ---------- Alohida ariza va so‘rovnoma oynalari ---------- */
@@ -278,6 +300,7 @@
   initCounters();
   initSteps();
   setYear();
+  initRatingChoices();
   initParticipationForms();
   initParticipationModals();
 })();

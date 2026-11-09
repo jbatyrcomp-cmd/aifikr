@@ -200,7 +200,6 @@
                     </ul>
                   </div>
                 </div>
-                <p class="owner"><strong>Mas’ul:</strong> loyiha guruhi</p>
               </div>
             </div>
           </li>
@@ -232,7 +231,6 @@
                     </ul>
                   </div>
                 </div>
-                <p class="owner"><strong>Mas’ul:</strong> fakultetlar</p>
               </div>
             </div>
           </li>
@@ -264,7 +262,6 @@
                     </ul>
                   </div>
                 </div>
-                <p class="owner"><strong>Mas’ul:</strong> yuridik bölim</p>
               </div>
             </div>
           </li>
@@ -296,7 +293,6 @@
                     </ul>
                   </div>
                 </div>
-                <p class="owner"><strong>Mas’ul:</strong> rektorat</p>
               </div>
             </div>
           </li>
@@ -427,10 +423,21 @@
               <label>Haftasiga örtaça qança vaqt?<select name="hours"><option value="">Tanlang</option><option>1 soatdan kam</option><option>1–3 soat</option><option>4–7 soat</option><option>8 soat va undan köp</option></select></label>
             </div>
             <div class="form-question"><p>Qaysi vositalardan foydalangansiz?</p><div class="check-grid">
-              <label class="check-option"><input type="checkbox" name="tools" value="ChatGPT"> ÇatGPT</label><label class="check-option"><input type="checkbox" name="tools" value="Gemini"> Gemini</label><label class="check-option"><input type="checkbox" name="tools" value="Claude"> Claude</label><label class="check-option"><input type="checkbox" name="tools" value="Copilot"> Microsoft Copilot</label><label class="check-option"><input type="checkbox" name="tools" value="DeepSeek"> DeepSeek</label><label class="check-option"><input type="checkbox" name="tools" value="Other"> Boşqa</label>
+              <label class="check-option"><input type="checkbox" name="tools" value="ChatGPT"> ChatGPT</label><label class="check-option"><input type="checkbox" name="tools" value="Gemini"> Gemini</label><label class="check-option"><input type="checkbox" name="tools" value="Claude"> Claude</label><label class="check-option"><input type="checkbox" name="tools" value="Copilot"> Microsoft Copilot</label><label class="check-option"><input type="checkbox" name="tools" value="DeepSeek"> DeepSeek</label><label class="check-option"><input type="checkbox" name="tools" value="Other"> Boşqa</label>
             </div></div>
             <div class="form-grid usage-details">
-              <label>Nima maqsadda foydalanasiz? <span class="required">*</span><select name="usage-purpose" required><option value="">Tanlang</option><option>Ma’lumot qidiriş va tuşuniş</option><option>Matn, tarjima yoki grammatika</option><option>Dasturlaş va masala yeçiş</option><option>Ğoya, reja yoki slayd</option><option>Topşiriqni tayyorlaş</option><option>Boşqa</option></select></label>
+              <div class="form-question form-span-2 usage-purpose-question">
+                <p>Nima maqsadda foydalanasiz? <span class="required">*</span> Bir neçta variantni tanlashingiz mumkin.</p>
+                <div class="check-grid usage-purpose-grid">
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Ma’lumot qidiriş va tuşuniş"> Ma’lumot qidiriş va tuşuniş</label>
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Matn, tarjima yoki grammatika"> Matn, tarjima yoki grammatika</label>
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Dasturlaş va masala yeçiş"> Dasturlaş va masala yeçiş</label>
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Ğoya, reja yoki slayd"> Ğoya, reja yoki slayd</label>
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Topşiriqni tayyorlaş"> Topşiriqni tayyorlaş</label>
+                  <label class="check-option"><input type="checkbox" name="usage-purpose" value="Boşqa"> Boşqa</label>
+                </div>
+                <label class="usage-purpose-other">Boşqa maqsad (ixtiyoriy)<textarea name="usage-purpose-other" rows="2" placeholder="Qöşimça maqsadingizni yozing"></textarea></label>
+              </div>
               <label>SI javobini tekşiriş odatingiz <span class="required">*</span><select name="verification" required><option value="">Tanlang</option><option>Heç qaçon</option><option>Ba’zan</option><option>Köpinça</option><option>Har doim</option></select></label>
               <label>SI dan asosan qayerda foydalanasiz? <select name="context"><option value="">Tanlang</option><option>Uyda</option><option>Universitetda</option><option>Iş joyida</option><option>Yölda yoki mobil qurilmada</option></select></label>
               <label>Pullik versiyadan foydalanasizmi? <select name="paid-version"><option value="">Tanlang</option><option>Ha</option><option>Yöq</option><option>Bilmayman</option></select></label>
@@ -499,7 +506,7 @@
 
     <dialog class="participation-modal" id="tashkilotchi-ariza" aria-labelledby="tashkilotchi-title">
       <button class="modal-close" type="button" data-modal-close aria-label="Oynani yopiş">×</button>
-      <div class="container narrow">
+      <div class="container narrow"> 
         <div class="section-head reveal"><p class="eyebrow">Volontyorlikning 2-yönalişi</p><h2 id="tashkilotchi-title">Loyiha taşkilotçisi böliş</h2><p class="lead">Ma’ruza va dars jarayonlarini taşkil etişga qatmaşiş, iştirokçilar bilan bevosita aloqada böliş, loyiha jamoasining tolaqonli azoziga aylaniş</p></div>
         <form class="participation-form reveal" id="organizer-form">
           <div class="form-grid">
@@ -539,7 +546,7 @@
           </article>
           <article class="pillar reveal">
             <p class="eyebrow">Stanford University · Pullik</p>
-            <h3>Maçine Learning — XCS229</h3>
+            <h3>Machine Learning — XCS229</h3>
             <p>Rasmiy onlayn kurs pullik. Statistik va matematik asoslar, nazoratli va nazoratsiz öqitiş, regressiya, klassifikatsiya va amaliy topşiriqlar. Narx va qabul sanasi Stanford sahifasida körsatiladi.</p>
             <a class="stat-src" href="https://online.stanford.edu/courses/xcs229-machine-learning" target="_blank" rel="noopener">Kursni köriş →</a>
           </article>
