@@ -154,7 +154,7 @@
   /* ---------- Ishtirok formalarini Sheets'ga yuborish ---------- */
   function initParticipationForms() {
     const forms = [
-      { id: 'survey-form', statusId: 'survey-status', type: 'survey', message: 'Sörovnomangiz qabul qilindi. Rahmat!' },
+      { id: 'survey-form', statusId: 'survey-status', type: 'survey', message: 'Sörovnomangiz qabul qilindi.sörovnomada qatnashganingiz uchun rahmat! Sizning fikringiz bizga juda muhim. Barcha fikrlaringiz katiy sir saqlanadi va faqat statistika uçun foydalaniladi.' },
       { id: 'volunteer-form', statusId: 'volunteer-status', type: 'participant', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' },
       { id: 'organizer-form', statusId: 'organizer-status', type: 'organizer', message: 'Arizangiz qabul qilindi. Tez orada siz bilan boğlanamiz.' }
     ];
